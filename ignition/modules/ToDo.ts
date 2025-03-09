@@ -1,9 +1,11 @@
+// @ts-nocheck
+
 const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
 module.exports = buildModule("ToDoModule", (m) => {
-    const lock = m.contract("ToDo");
+    const toDo = m.contract("ToDo");
 
-    return { lock };
+    return { toDo };
 });
 
 // deploying locally: npx hardhat ignition deploy ./ignition/modules/ToDo.js
