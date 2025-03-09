@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Steps to deploy on Sepolia
 
-## Getting Started
+1. Add Sepolia Netrowk in hardhat config:
 
-First, run the development server:
+Obtain alchemy url from alchemy dsashboard and private key of your account address.
+Paste the values in .env file.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```shell
+    networks: {
+        sepolia: {
+            chainId: 11155111,
+            url: process.env.ALCHEMY_URL,
+            accounts: [process.env.PRIVATE_KEY],
+        },
+    },
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Deploy contract on Sepolia Network
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+    npx hardhat ignition deploy ./ignition/modules/ToDo.js --network sepolia
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Verifying contract on Sepolia Etherscan for interacting with contract
 
-## Learn More
+```bash
+    npx hardhat verify --network sepolia 0x1c4654d9bdcfffE0b44688c9753c7bb915fC01Cc
+```
 
-To learn more about Next.js, take a look at the following resources:
+# Conrtact address deployed on Sepolia:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+0x1c4654d9bdcfffE0b44688c9753c7bb915fC01Cc
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Interacting with contract:
 
-## Deploy on Vercel
+> Verified Source code on sepolia etherscan:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    https://sepolia.etherscan.io/address/0x1c4654d9bdcfffE0b44688c9753c7bb915fC01Cc#code
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Read Contract:
+
+    https://sepolia.etherscan.io/address/0x1c4654d9bdcfffE0b44688c9753c7bb915fC01Cc#readContract
+
+> Interact with the contract using the following Link:
+
+    https://sepolia.etherscan.io/address/0x1c4654d9bdcfffE0b44688c9753c7bb915fC01Cc#writeContract
+
+Note: Please prefix title with task id in incremental order to track it.
